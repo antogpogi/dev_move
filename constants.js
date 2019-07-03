@@ -1,1 +1,1 @@
-exports.site_url = "http://192.168.1.128/yolo/api/v2";
+exports.site_url = "http://192.168.1.248/yolo/api/v2";

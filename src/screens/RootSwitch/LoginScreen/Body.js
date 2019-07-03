@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, ImageBackground, Text, View, Button, TextInput} from 'react-native';
+import React from 'react';
+import {StyleSheet, ImageBackground, Text, View, Button, TextInput} from 'react-native';
 
 const Body = ({ setUsername, setPassword, onButtonClick, onButtonRegister}) => {
     return(

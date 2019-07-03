@@ -7,6 +7,11 @@ import {
     createSwitchNavigator
 } from 'react-navigation';
 
+import React from 'react';
+import {Text} from 'react-native'
+
+import IconFont from 'react-native-vector-icons/FontAwesome';
+
 //Screens
 import HomeScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/HomeScreen/HomeScreen';
 import MessagesScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/MessagesScreen/MessegesScreen';
@@ -21,19 +26,16 @@ import LikeScreen from './src/screens/RootSwitch/RootStack/LikeScreen/LikeScreen
 import LogoutScreen from './src/screens/RootSwitch/RootStack/RootDrawer/LogoutScreen/LogoutScreen';
 
 
+
+
 //NotificationScreen with top navigation
+
 const NotificationTopTab = createMaterialTopTabNavigator({
     You: {
-        screen: YouScreen,
-        navigationOptions: {
-            header: null
-        }
+        screen: YouScreen
     },
     Following: {
-        screen: FollowingScreen,
-        navigationOptions: {
-            header: null
-        }
+        screen: FollowingScreen
     }
 })
 
@@ -41,21 +43,47 @@ const NotificationTopTab = createMaterialTopTabNavigator({
 const RootBottomTab = createBottomTabNavigator({
     Home: {
         screen: HomeScreen,
+        navigationOptions: () => ({
+            tabBarIcon: () => {
+                return <IconFont name={"home"} size={17}/>
+            },
+            header: () => {
+                return <Text>Home</Text>
+            }
+        })
     },
     Messages: {
-        screen: MessagesScreen
+        screen: MessagesScreen,
+        navigationOptions:{
+            tabBarIcon: () => {
+                return <IconFont name={"envelope-o"} size={17}/>
+            }
+        }
     },
     Photo: {
-        screen: PhotoScreen
+        screen: PhotoScreen,
+        navigationOptions:{
+            tabBarIcon: () => {
+                return <IconFont name={"send-o"} size={23} />
+            }
+        }
     },
     Notifications: {
         screen: NotificationTopTab,
         navigationOptions: {
-            header: null
+            headerMode: 'none',
+            tabBarIcon: () => {
+                return <IconFont name={"bell-o"} size={17}/>
+            }
         }
     },
     Profile:{
-        screen: ProfileScreen
+        screen: ProfileScreen,
+        navigationOptions:{
+            tabBarIcon: () => {
+                return <IconFont name={"user"} size={17}/>
+            }
+        }
     }
 })
 
@@ -69,22 +97,23 @@ const RootStack = createStackNavigator({
     RootDrawer: {
         screen: RootDrawer,
         navigationOptions: () => ({
-            titleStyle: {
-                textAlign: 'center'
-            },
-             title: 'YOLO'
+             title: "YOLO"
          })
     },
     Comments: {
         screen: CommentScreen,
         navigationOptions: () => ({
-            title: "Comments"
+            header: () => {
+                return <Text>Comments</Text>
+            }
         })
     },
     Likes: {
         screen: LikeScreen,
         navigationOptions: () => ({
-            title: "Likes"
+            header: () => {
+                return <Text>Likes</Text>
+            }
         })
     }
 })

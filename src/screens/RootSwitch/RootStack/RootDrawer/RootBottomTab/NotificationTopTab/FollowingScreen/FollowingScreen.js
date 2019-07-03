@@ -1,5 +1,5 @@
-import React, {Component, useState} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { StyleSheet, View, FlatList} from 'react-native';
 import Body from './Body'
 import {site_url} from '../../../../../../../../constants';
 import axios from 'axios';
@@ -33,11 +33,11 @@ const FollowingScreen = ({navigation, session}) => {
     const getInitialFollowing = async () => {
       let formBod = new FormData();
       formBod.append('type', "following")
-      const url = site_url + "/notification/recent_activity";
+      const url = site_url + "/notification/recent_activity/";
       setLoading(true)
       const result = await axiosAPI(url, formBod);
       setLoading(false)
-      console.log(result)
+      console.log({following:result.data.data})
       setFollowing(result.data.data)
     }
 
@@ -53,8 +53,9 @@ const FollowingScreen = ({navigation, session}) => {
             data={Following}
             showsVerticalScrollIndicator={false}
             renderItem = {({item}) => 
-              <Body userName={item.user_name} message={item.comment}/>
+              <Body userName={item.user_name} message={item.desc} timestamp={item.timestamp}/>
             }
+            keyExtractor={(item, index) => index.toString()}
           />
         </View>
     )

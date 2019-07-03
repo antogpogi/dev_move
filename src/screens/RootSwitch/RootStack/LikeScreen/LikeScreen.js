@@ -54,7 +54,7 @@ const LikeScreen = ({navigation}) => {
           renderItem = {({item}) => 
             <Like userName={item.user_name}/>
           }
-
+          keyExtractor={(item, index) => index.toString()}
          />
             
         </View>

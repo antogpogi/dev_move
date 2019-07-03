@@ -1,9 +1,8 @@
-import React, {Component, useState, useEffect} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, Dimensions} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import Body from './Body';
 import {site_url} from '../../../../constants';
 import axios from 'axios';
-import CryptoJS from 'crypto-js';
 import Loading from '../../../../Loading';
 import { connect } from 'react-redux';
 import { setSession } from './../../../store/actions/application';

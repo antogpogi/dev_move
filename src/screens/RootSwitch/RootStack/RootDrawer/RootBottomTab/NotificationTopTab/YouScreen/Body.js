@@ -1,16 +1,16 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import moment from 'moment-timezone';
 
-const Body= ({ getUser, onButtonClick, buttonText}) => {
+const Body= ({ userName, message, timestamp}) => {
     return(
-        <View style={{flex: 1}}>
-            <View style={styles.logoView}><Text style={styles.logo}>YOLO</Text></View>
-                <View style={styles.loginView}>
-                    <View style={styles.loginCard}>
-                        <Text>You</Text>
-                    </View>
-                </View>
-            <View style={styles.linkView} />
+        <View style={styles.notifBox}>
+            <View style={styles.image}>
+                <Image style={{width:35, height: 35, borderRadius: 35/2, marginRight:8, marginLeft:8}} source={require('../../../../../../../../public/images/1559644819305.jpg')} />
+            </View>
+            <View style={styles.info}>
+                <Text style={styles.username}>{userName} {message} {moment(moment.unix(timestamp).format('YYYY-MM-DD hh:mm:ss')).fromNow()}</Text>
+            </View>
         </View>
     );
 }
@@ -19,49 +19,23 @@ const Body= ({ getUser, onButtonClick, buttonText}) => {
 export default Body
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  logoView: {
-    flex: 2,
+ notifBox:{
+    height: 75, 
+    flexDirection: 'row',
+    flexWrap: 'nowrap',
     justifyContent: 'center',
-    alignItems: 'center',
+    borderBottomColor: '#bbb',
+    borderBottomWidth: StyleSheet.hairlineWidth
+    },
+  image:{
+      marginLeft: 10,
+      marginRight: 10,
+      justifyContent: 'center'
   },
-  logo: {
-    fontSize: 72,
-    textAlign: 'left',
-    margin: 15,
-    color: '#000',
-    fontWeight: 'bold',
-  },
-  loginView:{
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  loginCard: {
-    padding: 20,
-    borderRadius: 15,
-    borderColor: '#000',
-    width: 320,
-    height: 252,
-    margin: 20,
-    shadowRadius: 3,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.7,
-    elevation: 1
-  },
-  linkView:{
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  txtBox: {
-    height: 40, 
-    borderColor: 'gray', 
-    borderWidth: 1,
-    margin: 10
+  info:{
+      flex: 1,
+      justifyContent: 'center',
+      paddingLeft: 10
   }
 });
 

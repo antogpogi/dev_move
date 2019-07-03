@@ -1,73 +1,38 @@
-import React, {Component, useState} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React  from 'react';
+import {StyleSheet, View} from 'react-native';
 import Body from './Body'
+import Loading from '../../../../../../../Loading';
+import {connect} from 'react-redux';
+import {site_url} from '../../../../../../../constants';
 
-const Login = ({navigation}) => {
+const MessagesScreen = ({navigation, session}) => {
 
-    const [getUser, setUser] = useState('Antog');
-
-
-    const passNav = () => {
-      navigation.navigate('Register', {
-        payload: {
-          message: '2k'
-        }
-      });
-    }
-
+  const userData = session.user.data;
 
     return (
         <View style={styles.container}>
-            <Body getUser={getUser} buttonText={'HOME ALONE'} onButtonClick={passNav}/>
-        </View>
+           <Loading loading={getLoading} />
+          <FlatList 
+            data={Following}
+            showsVerticalScrollIndicator={false}
+            renderItem = {({item}) => 
+              <Body userName={item.user_name} message={item.comment}/>
+            }
+          />
+      </View>
     )
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1
-  },
-  logoView: {
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  logo: {
-    fontSize: 72,
-    textAlign: 'left',
-    margin: 15,
-    color: '#000',
-    fontWeight: 'bold',
-  },
-  loginView:{
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  loginCard: {
-    padding: 20,
-    borderRadius: 15,
-    borderColor: '#000',
-    width: 320,
-    height: 252,
-    margin: 20,
-    shadowRadius: 3,
-    shadowColor: '#000',
-    shadowOffset: {width: 0, height: 2},
-    shadowOpacity: 0.7,
-    elevation: 1
-  },
-  linkView:{
-    flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center'
-  },
-  txtBox: {
-    height: 40, 
-    borderColor: 'gray', 
-    borderWidth: 1,
-    margin: 10
   }
 });
 
-export default Login
+const mapStateToProps = state => {
+  return{
+    session: state.application.session
+  }
+}
+
+export default connect (mapStateToProps, null)(MessagesScreen)

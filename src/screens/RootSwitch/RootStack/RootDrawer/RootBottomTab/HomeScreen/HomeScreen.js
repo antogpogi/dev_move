@@ -1,5 +1,5 @@
-import React, {Component, useState, useEffect, useContext} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, FlatList} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, View, FlatList} from 'react-native';
 import Post from './Post';
 import axios from 'axios';
 import {site_url} from '../../../../../../../constants';
@@ -120,6 +120,7 @@ const HomeScreen = ({navigation, session}) => {
             <Post posts={item} openOption={openOption} like_unlike={like_unlike_post} comment_post={comment_post} setComment={setComment} getComment={getComment} viewLikes={viewLikes} viewComments={viewComments} />
           }
           extraData={getComment}
+          keyExtractor={(item, index) => index.toString()}
          />
         </View>
     )

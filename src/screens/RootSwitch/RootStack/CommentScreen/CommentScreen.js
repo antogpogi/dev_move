@@ -53,9 +53,8 @@ const CommentScreen = ({navigation}) => {
           renderItem = {({item}) => 
             <Comment userName={item.user_name} message={item.comment}/>
           }
-
-         />
-            
+          keyExtractor={(item, index) => index.toString()}
+         />   
         </View>
     )
 }

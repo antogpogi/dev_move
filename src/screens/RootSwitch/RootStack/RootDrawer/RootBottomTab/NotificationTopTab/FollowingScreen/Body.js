@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import moment from 'moment-timezone';
 
-const Body= ({ getUser, onButtonClick, buttonText}) => {
+const Body= ({ userName, message, timestamp}) => {
     return(
         <View style={styles.notifBox}>
             <View style={styles.image}>
                 <Image style={{width:35, height: 35, borderRadius: 35/2, marginRight:8, marginLeft:8}} source={require('../../../../../../../../public/images/1559644819305.jpg')} />
             </View>
             <View style={styles.info}>
-                <Text style={styles.username}>{userName} {message}</Text>
-                <Text style={{marginTop: 5}}>5 minutes ago</Text>
+                <Text style={styles.username}>{userName} {message} {moment(moment.unix(timestamp).format('YYYY-MM-DD hh:mm:ss')).fromNow()}</Text>
             </View>
         </View>
     );
@@ -36,9 +36,6 @@ const styles = StyleSheet.create({
       flex: 1,
       justifyContent: 'center',
       paddingLeft: 10
-  },
-  username:{
-      fontWeight: 'bold'
   }
 });
 
