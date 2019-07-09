@@ -24,12 +24,12 @@ import RegisterScreen from './src/screens/RootSwitch/RegisterScreen/RegisterScre
 import CommentScreen from './src/screens/RootSwitch/RootStack/CommentScreen/CommentScreen';
 import LikeScreen from './src/screens/RootSwitch/RootStack/LikeScreen/LikeScreen';
 import LogoutScreen from './src/screens/RootSwitch/RootStack/RootDrawer/LogoutScreen/LogoutScreen';
+import PostScreen from './src/screens/RootSwitch/RootStack/PostScreen/SinglePostScreen';
 
 
 
 
 //NotificationScreen with top navigation
-
 const NotificationTopTab = createMaterialTopTabNavigator({
     You: {
         screen: YouScreen
@@ -39,21 +39,54 @@ const NotificationTopTab = createMaterialTopTabNavigator({
     }
 })
 
+const HomeStack = createStackNavigator({
+    HomeS: {
+        screen: HomeScreen,
+    },
+    ViewProfile: {
+        screen: ProfileScreen
+    }
+})
+
+const MessagesStack = createStackNavigator({
+    MessagesS: {
+        screen: MessagesScreen,
+    }
+})
+
+const PhotoStack = createStackNavigator({
+    PhotosS: {
+        screen: PhotoScreen,
+    }
+})
+
+const NotificationStack = createStackNavigator({
+    NotificationsS: {
+        screen: NotificationTopTab,
+        navigationOptions: () => ({
+            header: null
+        })
+    }
+})
+
+const ProfileStack = createStackNavigator({
+    ProfileS:{
+        screen: ProfileScreen
+    }
+})
+
 //Root bottom navigation
 const RootBottomTab = createBottomTabNavigator({
     Home: {
-        screen: HomeScreen,
+        screen: HomeStack,
         navigationOptions: () => ({
             tabBarIcon: () => {
                 return <IconFont name={"home"} size={17}/>
-            },
-            header: () => {
-                return <Text>Home</Text>
             }
         })
     },
     Messages: {
-        screen: MessagesScreen,
+        screen: MessagesStack,
         navigationOptions:{
             tabBarIcon: () => {
                 return <IconFont name={"envelope-o"} size={17}/>
@@ -61,24 +94,23 @@ const RootBottomTab = createBottomTabNavigator({
         }
     },
     Photo: {
-        screen: PhotoScreen,
+        screen: PhotoStack,
         navigationOptions:{
             tabBarIcon: () => {
-                return <IconFont name={"send-o"} size={23} />
+                return <IconFont name={"camera"} size={23} />
             }
         }
     },
     Notifications: {
-        screen: NotificationTopTab,
+        screen: NotificationStack,
         navigationOptions: {
-            headerMode: 'none',
             tabBarIcon: () => {
                 return <IconFont name={"bell-o"} size={17}/>
             }
         }
     },
     Profile:{
-        screen: ProfileScreen,
+        screen: ProfileStack,
         navigationOptions:{
             tabBarIcon: () => {
                 return <IconFont name={"user"} size={17}/>
@@ -97,7 +129,7 @@ const RootStack = createStackNavigator({
     RootDrawer: {
         screen: RootDrawer,
         navigationOptions: () => ({
-             title: "YOLO"
+             header:null
          })
     },
     Comments: {
@@ -115,8 +147,17 @@ const RootStack = createStackNavigator({
                 return <Text>Likes</Text>
             }
         })
+    },
+    Post: {
+        screen: PostScreen,
+        navigationOptions: () => ({
+            header: () => {
+                return <Text>YOLO</Text>
+            }
+        })
     }
 })
+
 
 //Root Screens for not nested screens.
  const RootSwitch = createSwitchNavigator({
@@ -127,4 +168,4 @@ const RootStack = createStackNavigator({
 
 const RootContainer = createAppContainer(RootSwitch)
 
- export default RootContainer;
+export default RootContainer;

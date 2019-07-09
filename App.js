@@ -12,8 +12,8 @@ export default class App extends Component {
     return (
       <Provider store={configureStore()}>
         <PaperProvider>
-          {/* <Nav /> */}
-          <ProfileScreen />
+          <Nav />
+          {/* <ProfileScreen /> */}
         </PaperProvider>
       </Provider>
     );

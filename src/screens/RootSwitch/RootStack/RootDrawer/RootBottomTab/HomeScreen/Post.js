@@ -1,21 +1,21 @@
-<script src="http://localhost:8097"></script>
-import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput, Image} from 'react-native';
+<script src="http://localhost:8081"></script>
+import React from 'react';
+import {StyleSheet, Text, View, TextInput, Image, TouchableOpacity} from 'react-native';
 import IconFont from 'react-native-vector-icons/FontAwesome';
 import moment from 'moment-timezone';
 
 
-const Post = ({posts, openOption, like_unlike, comment_post, setComment, getComment, viewLikes, viewComments}) => {
+const Post = ({posts, openOption, like_unlike, comment_post, setComment, getComment, viewLikes, viewComments, viewProfile}) => {
 //   console.log(posts)
     return(
         <View style={{flex: 1}}>
             <View style={styles.post}>
                 <View style={styles.head}>
                     <View style={[styles.user, styles.flexView]}>
-                        <View style={{flexBasis:"60%", flexDirection:"row", alignItems:'center'}}>
+                        <TouchableOpacity onPress={()=>{viewProfile({user_id: posts.user_id})}} style={{flexBasis:"60%", flexDirection:"row", alignItems:'center'}}>
                           <Image style={{width:35, height: 35, borderRadius: 35/2, marginRight:12, marginLeft:8}} source={require('../../../../../../../public/images/1559644819305.jpg')} />
                           <Text style={{fontWeight: 'bold'}}>{posts.user_name}</Text>
-                        </View>
+                        </TouchableOpacity>
                         <Text>{moment(moment.unix(posts.insertdate).format('YYYY-MM-DD hh:mm:ss')).fromNow()}</Text>
                         <IconFont style={{padding: 23}} onPress={() => {openOption({post_id: posts.post_id})}} name={"ellipsis-v"}  />
                     </View>

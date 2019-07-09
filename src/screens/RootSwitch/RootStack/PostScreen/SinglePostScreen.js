@@ -1,19 +1,19 @@
 import React, {useState, useEffect} from 'react';
 import {StyleSheet, View, FlatList} from 'react-native';
-import Post from './Post';
+import Post from '../RootDrawer/RootBottomTab/HomeScreen/Post';
 import axios from 'axios';
-import {site_url} from '../../../../../../../constants';
-import Loading from '../../../../../../../Loading';
-import Options from './Options';
+import {site_url} from '../../../../../constants';
+import Loading from '../../../../../Loading';
+import Options from '../RootDrawer/RootBottomTab/HomeScreen/Options';
 import { connect } from 'react-redux';
 
-const HomeScreen = ({navigation, session}) => {
+const SinglePostScreen = ({navigation, session}) => {
 
     const [getLoading, setLoading] = useState(true)
     const [getPostId, setPostId] = useState(false)
     const [getVisible, setVisible] = useState(false)
 
-    // const payload = navigation.getParam('payload');
+    const payload = navigation.getParam('payload');
     const [getPost, setPost] = useState([]);
     const [getComment, setComment] = useState('');
 
@@ -36,11 +36,12 @@ const HomeScreen = ({navigation, session}) => {
     //load Home Feed
     const getInitialPost = async () => {  
       let formBod = new FormData();
-      formBod.append('type', "down")
-      const url = site_url + "/user/home_feed/";
+      formBod.append('post_id', payload.post_id)
+      const url = site_url + "/posts/post_details";
       const result = await axiosAPI(url, formBod);
       setLoading(false);
-      setPost(result.data.data)
+      console.log(result)
+      setPost([result.data.data])
     }
 
     useEffect(() => {
@@ -188,4 +189,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default connect(mapStateToProps, null)(HomeScreen)
+export default connect(mapStateToProps, null)(SinglePostScreen)
