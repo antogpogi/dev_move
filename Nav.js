@@ -8,9 +8,10 @@ import {
 } from 'react-navigation';
 
 import React from 'react';
-import {Text} from 'react-native'
+import {Text} from 'react-native';
 
 import IconFont from 'react-native-vector-icons/FontAwesome';
+import DefaultHeader from './src/components/common/DefaultHeader';
 
 //Screens
 import HomeScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/HomeScreen/HomeScreen';
@@ -25,6 +26,8 @@ import CommentScreen from './src/screens/RootSwitch/RootStack/CommentScreen/Comm
 import LikeScreen from './src/screens/RootSwitch/RootStack/LikeScreen/LikeScreen';
 import LogoutScreen from './src/screens/RootSwitch/RootStack/RootDrawer/LogoutScreen/LogoutScreen';
 import PostScreen from './src/screens/RootSwitch/RootStack/PostScreen/SinglePostScreen';
+import { directive } from '@babel/types';
+
 
 
 
@@ -42,6 +45,11 @@ const NotificationTopTab = createMaterialTopTabNavigator({
 const HomeStack = createStackNavigator({
     HomeS: {
         screen: HomeScreen,
+        navigationOptions:()=>({
+            headerTitle: () => {
+                return <DefaultHeader />
+            }
+        })
     },
     ViewProfile: {
         screen: ProfileScreen
@@ -74,7 +82,12 @@ const NotificationStack = createStackNavigator({
 
 const ProfileStack = createStackNavigator({
     ProfileS:{
-        screen: ProfileScreen
+        screen: ProfileScreen,
+        navigationOptions:()=>({
+            headerTitle: () =>{
+                return <DefaultHeader />
+            }
+        })
     }
 })
 

@@ -12,8 +12,8 @@ const ProfileImage = () => {
                 <Text style={{fontWeight:'bold', fontSize:23}}>vyrrh</Text>
                 </View>
                 <View style={{flex:1, flexDirection:"row"}}>
-                <TouchableOpacity style={styles.follow}><Text>Following</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.follow}><Text>Followers</Text></TouchableOpacity>
+                  <TouchableOpacity style={styles.follow}><Text>Following</Text></TouchableOpacity>
+                  <TouchableOpacity style={styles.follow}><Text>Followers</Text></TouchableOpacity>
                 </View>
             </View>
         </View>
@@ -36,11 +36,12 @@ const styles = StyleSheet.create({
       borderColor:"#bbb", 
       padding:20, 
       marginRight:25,
+      marginBottom: 20,
       borderWidth: StyleSheet.hairlineWidth,
-      borderBottomLeftRadius:27/3,
-      borderBottomRightRadius:27/3,
-      borderTopLeftRadius:27/3,
-      borderTopRightRadius:27/3,
+      borderBottomLeftRadius:20/3,
+      borderBottomRightRadius:20/3,
+      borderTopLeftRadius:20/3,
+      borderTopRightRadius:20/3,
     }
   });
 

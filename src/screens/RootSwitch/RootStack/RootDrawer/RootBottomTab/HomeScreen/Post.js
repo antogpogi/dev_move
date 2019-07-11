@@ -73,7 +73,7 @@ export default Post
 
 const styles = StyleSheet.create({
   post: {
-      height: 730,
+      height: 750,
       borderBottomColor: '#bbb', 
       borderBottomWidth: 2.5
   },
