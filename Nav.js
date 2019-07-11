@@ -64,7 +64,10 @@ const NotificationStack = createStackNavigator({
     NotificationsS: {
         screen: NotificationTopTab,
         navigationOptions: () => ({
-            header: null
+            headerStyle:{
+                height:0,
+                backgroundColor: 'transparent'
+            }
         })
     }
 })

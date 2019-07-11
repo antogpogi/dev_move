@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     },
     follow:{
       borderColor:"#bbb", 
-      padding:27, 
+      padding:20, 
       marginRight:25,
       borderWidth: StyleSheet.hairlineWidth,
       borderBottomLeftRadius:27/3,

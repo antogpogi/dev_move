@@ -98,6 +98,7 @@ const styles = StyleSheet.create({
   },
   commentBox:{
       justifyContent: 'space-around',
+      marginTop: 10
   },
   user:{
       flex: 2,
