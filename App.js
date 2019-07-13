@@ -5,17 +5,14 @@ import Nav from './Nav';
 import { Provider } from 'react-redux';
 import configureStore from './src/store/configureStore';
 
-import ProfileScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/ProfileScreen/ProfileScreen';
-
 export default class App extends Component {
   render() {
     return (
       <Provider store={configureStore()}>
         <PaperProvider style={{flex: 1}}>
-          {/* <SafeAreaView> */}
+          <SafeAreaView style={{flex:1}}>
             <Nav style={{flex:1}} />
-          {/* </SafeAreaView> */}
-          {/* <ProfileScreen /> */}
+          </SafeAreaView>
         </PaperProvider>
       </Provider>
     );
