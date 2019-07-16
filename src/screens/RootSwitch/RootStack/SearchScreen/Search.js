@@ -4,7 +4,7 @@ import { FlatList, TextInput, TouchableOpacity} from 'react-native-gesture-handl
 import IconFont from 'react-native-vector-icons/FontAwesome';
 import SearchItem from './SearchItem';
 
-const Search = ({setSelection, setTextSearch, Selection, goBack, Data}) => {
+const Search = ({setSelection, setTextSearch, viewOtherProfile, Selection, goBack, Data}) => {
     return (
         <View style={{flex: 1}}>
             <View style={styles.topNav}>
@@ -51,7 +51,7 @@ const Search = ({setSelection, setTextSearch, Selection, goBack, Data}) => {
                     data={Data}
                     showsVerticalScrollIndicator={false}
                     renderItem={({item}) => 
-                        <SearchItem item={item} />
+                        <SearchItem item={item} viewOtherProfile={viewOtherProfile}/>
                     }
                     keyExtractor={(item, index) => index.toString()}
                 />

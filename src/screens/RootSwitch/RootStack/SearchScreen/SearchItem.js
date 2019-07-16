@@ -1,10 +1,12 @@
 import React from 'react';
 import {StyleSheet, View, Text, Image} from 'react-native';
 import IconFont from 'react-native-vector-icons/FontAwesome';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
 
-const SearchItem = ({item}) => {
+const SearchItem = ({item, viewOtherProfile}) => {
     return (
-         <View style={styles.notifBox}>
+         <View style={{flex:1}}>
+            <TouchableWithoutFeedback style={styles.notifBox} onPress={() => {viewOtherProfile(item)}}>
             <View style={styles.image}>
                 {item.type == "places" ? <IconFont name={"map-marker"} size={28} style={{marginLeft:16}} /> : 
                 item.type == "tags" ? <IconFont name={"tags"} size={28} style={{marginLeft:16}} /> : 
@@ -13,6 +15,7 @@ const SearchItem = ({item}) => {
             <View style={styles.info}>
                 <Text style={styles.username}>{item.name}</Text>
             </View>
+            </TouchableWithoutFeedback> 
         </View>
     )
 }

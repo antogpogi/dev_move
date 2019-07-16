@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image, View, TouchableOpacity, Text} from 'react-native';
 
-const ProfileImage = () => {
+const ProfileImage = ({user}) => {
     return (
         <View style={styles.header}>
             <View style={styles.profile}>
@@ -9,7 +9,7 @@ const ProfileImage = () => {
             </View>
             <View style={styles.body}>
                 <View style={{flex:1, justifyContent:"center"}}>
-                <Text style={{fontWeight:'bold', fontSize:23}}>vyrrh</Text>
+                <Text style={{fontWeight:'bold', fontSize:23}}>{user.user_name}</Text>
                 </View>
                 <View style={{flex:1, flexDirection:"row"}}>
                   <TouchableOpacity style={styles.follow}><Text>Following</Text></TouchableOpacity>

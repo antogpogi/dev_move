@@ -6,6 +6,7 @@ import {site_url} from '../../../../../../../constants';
 import ProfileHeader from './ProfileHeader';
 import ProfileButtons from './ProfileButtons';
 import ProfileContent from './ProfileContent';
+import Loading from '../../../../../../../Loading';
 
 const ProfileScreen= ({navigation, session}) => {
   const [Menu, setMenu] = useState("pics")
@@ -41,14 +42,15 @@ const ProfileScreen= ({navigation, session}) => {
 
   //load Home Feed
   getInitialPost = async () => {  
-    payload == null ? payload = userData : '';
+    payload == null ? payload = userData : payload = payload;
     let formBod = new FormData();
     formBod.append('user_id', payload.user_id)
     formBod.append('is_tagged', 0)
     const url = site_url + "/user/posts_list/";
     const result = await axiosAPI(url, formBod);
     setLoading(false);
-    setList([...result.data.data])
+    result.data.data !== undefined ? 
+    setList([...result.data.data]) : ([setList([]), setMenu("None")])
   }
 
   getUserData = async () => {
@@ -56,8 +58,7 @@ const ProfileScreen= ({navigation, session}) => {
     formBod.append('user_id', payload.user_id)
     const url = site_url + "/user/user_details/user_id/";
     const result = await axiosAPI(url, formBod);
-    setUser(result)
-    console.log(getUser)
+    setUser(result.data.data)
   }
 
   //Like or unlike a post.
@@ -139,7 +140,8 @@ const ProfileScreen= ({navigation, session}) => {
   }
     return(
        <View style={styles.container}>
-          <ProfileHeader />
+          <Loading loading={getLoading}/> 
+          <ProfileHeader user={getUser} />
           <ProfileButtons setMenu={setMenu} />
           <ProfileContent Menu={Menu} getList={getList} viewThisPost={viewThisPost} getLoading={getLoading} getVisible={getVisible} setVisible={setVisible} getPostId={getPostId} openOption={openOption} like_unlike_post={like_unlike_post} comment_post={comment_post} setComment={setComment} getComment={getComment} viewLikes={viewLikes} viewComments={viewComments} viewProfile={viewProfile}  />
        </View>

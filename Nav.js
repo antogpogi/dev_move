@@ -8,7 +8,7 @@ import {
 } from 'react-navigation';
 
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
 
 import IconFont from 'react-native-vector-icons/FontAwesome';
 import DefaultHeader from './src/components/common/DefaultHeader';
@@ -151,24 +151,36 @@ const RootStack = createStackNavigator({
     Comments: {
         screen: CommentScreen,
         navigationOptions: () => ({
-            header: () => {
-                return <Text>Comments</Text>
+            headerTitle: () => {
+                return (
+                <View style={{flex:1}}>
+                    <Text>Comments</Text>    
+                </View>
+                )
             }
         })
     },
     Likes: {
         screen: LikeScreen,
         navigationOptions: () => ({
-            header: () => {
-                return <Text>Likes</Text>
+            headerTitle: () => {
+                return (
+                <View style={{flex:1}}>
+                    <Text>Likes</Text>    
+                </View>
+                )
             }
         })
     },
     Post: {
         screen: PostScreen,
         navigationOptions: () => ({
-            header: () => {
-                return <Text>YOLO</Text>
+            headerTitle: () => {
+                return (
+                <View style={{flex:1}}>
+                    <Text>YOLO</Text>    
+                </View>
+                )
             }
         })
     },

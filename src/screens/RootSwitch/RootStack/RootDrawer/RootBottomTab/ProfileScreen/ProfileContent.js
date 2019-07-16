@@ -5,6 +5,7 @@ import Loading from '../../../../../../../Loading';
 import Options from '../HomeScreen/Options';
 import Post from '../HomeScreen/Post';
 import ImageList from './ImageList';
+import EmptyContent from "../../../../../../components/common/EmptyContent";
 
 const numColumns = 3
 
@@ -13,6 +14,7 @@ const ProfileContent = ({Menu, getList, viewThisPost, getLoading, getVisible, se
     return (
         <View style={styles.content}>
           {Menu == "pics" ? 
+          (getList != [] ? 
           <View style={{flex:1}}>
               <FlatList 
                   data={getList}
@@ -26,9 +28,10 @@ const ProfileContent = ({Menu, getList, viewThisPost, getLoading, getVisible, se
                   }
                   numColumns={numColumns}
                   keyExtractor={(item, index) => index.toString()}
-              />
-            </View> : 
+              /></View> : <EmptyContent message={{message: "No photos"}} />)
+             : 
             Menu == "posts" ?
+            (getList != [] ?
             <View style={{flex:1}}>
               <Loading loading={getLoading} />
               <Options visible={getVisible} setVisible={setVisible} post_id={getPostId} />
@@ -43,8 +46,10 @@ const ProfileContent = ({Menu, getList, viewThisPost, getLoading, getVisible, se
                   }
                   extraData={getComment}
                   keyExtractor={(item, index) => index.toString()}
-              />
-            </View> :
+              /></View> : <EmptyContent message={{message: "No Posts"}} />)
+             :
+            Menu == "shared" ? 
+              (getList != [] ? 
             <View style={{flex:1}}>
               <FlatList 
                   data={getList}
@@ -55,8 +60,9 @@ const ProfileContent = ({Menu, getList, viewThisPost, getLoading, getVisible, se
                   numColumns={numColumns}
                   keyExtractor={(item, index) => index.toString()}
               />
-            </View> 
-            }
+              </View> : <EmptyContent message={{message: "No Shared Posts"}} />
+            ) : <View></View>
+            } 
           </View>
     )
 }

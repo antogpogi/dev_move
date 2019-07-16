@@ -31,6 +31,14 @@ const SearchScreen = ({navigation, session}) => {
         }
     }
 
+    const viewOtherProfile = (data) => {
+        navigation.navigate("ViewProfile", {
+            payload: {
+                user_id: data.id
+            }
+        })
+    }
+
     useEffect(() => {
         serviceSearch(Selection, TextSearch)
     }, [Selection, TextSearch])
@@ -40,7 +48,7 @@ const SearchScreen = ({navigation, session}) => {
     }
 
     return (
-       <Search setSelection={setSelection} setTextSearch={setTextSearch} Selection={Selection} goBack={goBack} Data={Data} />
+       <Search setSelection={setSelection} setTextSearch={setTextSearch} viewOtherProfile={viewOtherProfile} Selection={Selection} goBack={goBack} Data={Data} />
     )
 }
 
