@@ -5,7 +5,7 @@ const ProfileButton = ({setMenu}) => {
     return (
     <View style={styles.buttons}>
         <View style={{flex:1}}>
-            <TouchableOpacity onPress={() => setMenu("pic")} style={styles.buttonItems}><Text>Photos</Text></TouchableOpacity>
+            <TouchableOpacity onPress={() => setMenu("pics")} style={styles.buttonItems}><Text>Photos</Text></TouchableOpacity>
         </View>
         <View style={{flex:1}}>
             <TouchableOpacity onPress={() => setMenu("posts")} style={styles.buttonItems}><Text>Posts</Text></TouchableOpacity>

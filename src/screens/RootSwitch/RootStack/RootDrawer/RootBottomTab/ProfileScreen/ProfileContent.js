@@ -14,52 +14,54 @@ const ProfileContent = ({Menu, getList, viewThisPost, getLoading, getVisible, se
     return (
         <View style={styles.content}>
           {Menu == "pics" ? 
-          (getList != [] ? 
-          <View style={{flex:1}}>
-              <FlatList 
-                  data={getList}
-                  style={styles.list}
-                  contentContainerStyle={{alignItems:'flex-start', justifyContent:'space-between', display:'flex'}}
-                  renderItem={({item}) => {
-                    return(
-                        <ImageList item={item} viewThisPost={viewThisPost} />                 
-                    );
-                    }
-                  }
-                  numColumns={numColumns}
-                  keyExtractor={(item, index) => index.toString()}
-              /></View> : <EmptyContent message={{message: "No photos"}} />)
+          (getList.length > 0 ? 
+              <View style={{flex:1}}>
+                  <FlatList 
+                      data={getList}
+                      style={styles.list}
+                      contentContainerStyle={{alignItems:'flex-start', justifyContent:'space-between', display:'flex'}}
+                      renderItem={({item}) => {
+                        return(
+                            <ImageList item={item} viewThisPost={viewThisPost} />                 
+                        );
+                        }
+                      }
+                      numColumns={numColumns}
+                      keyExtractor={(item, index) => index.toString()}
+                  />
+              </View> : <EmptyContent message={{message: "No photos"}} />)
              : 
             Menu == "posts" ?
-            (getList != [] ?
-            <View style={{flex:1}}>
-              <Loading loading={getLoading} />
-              <Options visible={getVisible} setVisible={setVisible} post_id={getPostId} />
-              <FlatList 
-                  data={getList}
-                  showsVerticalScrollIndicator={false}
-                  renderItem={({item}) => {
-                    return(
-                      <Post posts={item} openOption={openOption} like_unlike={like_unlike_post} comment_post={comment_post} setComment={setComment} getComment={getComment} viewLikes={viewLikes} viewComments={viewComments} viewProfile={viewProfile} />
-                    );
-                    }
-                  }
-                  extraData={getComment}
-                  keyExtractor={(item, index) => index.toString()}
-              /></View> : <EmptyContent message={{message: "No Posts"}} />)
+            (getList.length > 0 ?
+                <View style={{flex:1}}>
+                  <Loading loading={getLoading} />
+                  <Options visible={getVisible} setVisible={setVisible} post_id={getPostId} />
+                  <FlatList 
+                      data={getList}
+                      showsVerticalScrollIndicator={false}
+                      renderItem={({item}) => {
+                        return(
+                          <Post posts={item} openOption={openOption} like_unlike={like_unlike_post} comment_post={comment_post} setComment={setComment} getComment={getComment} viewLikes={viewLikes} viewComments={viewComments} viewProfile={viewProfile} />
+                        );
+                        }
+                      }
+                      extraData={getComment}
+                      keyExtractor={(item, index) => index.toString()}
+                  />
+                </View> : <EmptyContent message={{message: "No Posts"}} />)
              :
             Menu == "shared" ? 
-              (getList != [] ? 
-            <View style={{flex:1}}>
-              <FlatList 
-                  data={getList}
-                  style={styles.list}
-                  renderItem={({item}) => 
-                    <ImageList item={item} viewThisPost={viewThisPost}/>
-                  }
-                  numColumns={numColumns}
-                  keyExtractor={(item, index) => index.toString()}
-              />
+              (getList.length > 0 ? 
+              <View style={{flex:1}}>
+                <FlatList 
+                    data={getList}
+                    style={styles.list}
+                    renderItem={({item}) => 
+                      <ImageList item={item} viewThisPost={viewThisPost}/>
+                    }
+                    numColumns={numColumns}
+                    keyExtractor={(item, index) => index.toString()}
+                />
               </View> : <EmptyContent message={{message: "No Shared Posts"}} />
             ) : <View></View>
             } 

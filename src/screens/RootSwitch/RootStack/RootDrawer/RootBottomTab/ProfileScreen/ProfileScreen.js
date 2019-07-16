@@ -50,7 +50,7 @@ const ProfileScreen= ({navigation, session}) => {
     const result = await axiosAPI(url, formBod);
     setLoading(false);
     result.data.data !== undefined ? 
-    setList([...result.data.data]) : ([setList([]), setMenu("None")])
+    setList([...result.data.data]) : setList([])
   }
 
   getUserData = async () => {
