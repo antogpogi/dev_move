@@ -6,6 +6,7 @@ import {site_url} from '../../../../../../../constants';
 import ProfileHeader from './ProfileHeader';
 import ProfileButtons from './ProfileButtons';
 import ProfileContent from './ProfileContent';
+import SettingScreen from './SettingScreen/SettingScreen';
 import Loading from '../../../../../../../Loading';
 
 const ProfileScreen= ({navigation, session}) => {
@@ -138,12 +139,32 @@ const ProfileScreen= ({navigation, session}) => {
       }
     });
   }
+
+  const viewSettings = (data) => {
+    navigation.navigate('Settings');
+  }
     return(
        <View style={styles.container}>
-          <Loading loading={getLoading}/> 
+          {/* <Loading loading={getLoading}/>  */}
           <ProfileHeader user={getUser} />
           <ProfileButtons setMenu={setMenu} />
-          <ProfileContent Menu={Menu} getList={getList} viewThisPost={viewThisPost} getLoading={getLoading} getVisible={getVisible} setVisible={setVisible} getPostId={getPostId} openOption={openOption} like_unlike_post={like_unlike_post} comment_post={comment_post} setComment={setComment} getComment={getComment} viewLikes={viewLikes} viewComments={viewComments} viewProfile={viewProfile}  />
+          <ProfileContent 
+                Menu={Menu} 
+                getList={getList} 
+                viewThisPost={viewThisPost} 
+                // getLoading={getLoading} 
+                getVisible={getVisible} 
+                setVisible={setVisible} 
+                getPostId={getPostId} 
+                openOption={openOption} 
+                like_unlike_post={like_unlike_post} 
+                comment_post={comment_post} 
+                setComment={setComment} 
+                getComment={getComment} 
+                viewLikes={viewLikes} 
+                viewComments={viewComments} 
+                viewProfile={viewProfile}
+            />
        </View>
     );
 }
