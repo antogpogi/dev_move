@@ -4,6 +4,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import {site_url} from '../../../../../../../constants';
 import ProfileHeader from './ProfileHeader';
+import ViewProfileHeader from './ViewProfileHeader';
 import ProfileButtons from './ProfileButtons';
 import ProfileContent from './ProfileContent';
 import SettingScreen from './SettingScreen/SettingScreen';
@@ -20,6 +21,7 @@ const ProfileScreen= ({navigation, session}) => {
   const [getList, setList] = useState([]);
   const [getUser, setUser] = useState([]);
   const [getComment, setComment] = useState('');
+  const [Viewing, setViewing] = useState('user')
 
   //data from login
   const userData = session.user.data;
@@ -42,8 +44,9 @@ const ProfileScreen= ({navigation, session}) => {
   },[]);
 
   //load Home Feed
-  getInitialPost = async () => {  
-    payload == null ? payload = userData : payload = payload;
+  getInitialPost = async () => { 
+    //if view other profile, uses payload. if user profile, use UserData 
+    payload == null ? payload = userData : [payload = payload, setViewing("other")];
     let formBod = new FormData();
     formBod.append('user_id', payload.user_id)
     formBod.append('is_tagged', 0)
@@ -51,7 +54,7 @@ const ProfileScreen= ({navigation, session}) => {
     const result = await axiosAPI(url, formBod);
     setLoading(false);
     result.data.data !== undefined ? 
-    setList([...result.data.data]) : ([setList([]), setMenu("None")])
+    setList([...result.data.data]) : setList([])
   }
 
   getUserData = async () => {
@@ -140,13 +143,28 @@ const ProfileScreen= ({navigation, session}) => {
     });
   }
 
-  const viewSettings = (data) => {
-    navigation.navigate('Settings');
+  const follow_unfollow = async (data) => {
+    try{
+      let formBod = new FormData()
+      formBod.append("user_id", data.user_id)
+      formBod.append("status", "follow")
+      const url = site_url + "/follower_following/follow_unfollow/";
+      setLoading(true)
+      const res = await axiosAPI(url, formBod)
+      console.log(res)
+      setLoading(false)
+      getInitialPost()
+    }catch(error){
+      console.error(error)
+    }
   }
     return(
        <View style={styles.container}>
-          {/* <Loading loading={getLoading}/>  */}
-          <ProfileHeader user={getUser} />
+          <Loading loading={getLoading}/> 
+          {/* if viewing other profile use ViewProfileHeader if user profile, use ProfileHeader */}
+          {Viewing == "user" ? 
+          <ProfileHeader user={getUser}/> : 
+          <ViewProfileHeader user={getUser} follow_unfollow={follow_unfollow} />}
           <ProfileButtons setMenu={setMenu} />
           <ProfileContent 
                 Menu={Menu} 

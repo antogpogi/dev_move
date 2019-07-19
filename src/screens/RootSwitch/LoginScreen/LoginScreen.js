@@ -9,8 +9,8 @@ import { setSession } from './../../../store/actions/application';
 
 const Login = ({navigation, session, onSetSession}) => {
 
-    const [getUsername, setUsername] = useState('vyrrh')
-    const [getPassword, setPassword] = useState('123456')
+    const [getUsername, setUsername] = useState('andrew')
+    const [getPassword, setPassword] = useState('kierberdin')
 
     const [getLoading, setLoading] = useState(false)
 
