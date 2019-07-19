@@ -6,7 +6,7 @@ import {site_url} from '../../../../../../../constants';
 import Loading from '../../../../../../../Loading';
 import Options from './Options';
 import { connect } from 'react-redux';
-import firebase from 'react-native-firebase';
+// import firebase from 'react-native-firebase';
 
 const HomeScreen = ({navigation, session}) => {
 
@@ -18,13 +18,13 @@ const HomeScreen = ({navigation, session}) => {
     const [getPost, setPost] = useState([]);
     const [getComment, setComment] = useState('');
 
-    const fb = firebase.auth()
-    .signInAnonymously()
-    .then(credential => {
-      if(credential) {
-        console.log("default app user -> ", credential.user.toJSON())
-      }
-    })
+    // const fb = firebase.auth()
+    // .signInAnonymously()
+    // .then(credential => {
+    //   if(credential) {
+    //     console.log("default app user -> ", credential.user.toJSON())
+    //   }
+    // })
 
     //data from login
     const userData = session.user.data;
