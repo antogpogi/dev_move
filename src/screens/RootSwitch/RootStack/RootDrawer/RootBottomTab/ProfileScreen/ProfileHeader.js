@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Image, View, TouchableOpacity, Text} from 'react-native';
 
-const ProfileImage = ({user}) => {
+const ProfileHeader = ({user}) => {
     return (
         <View style={styles.header}>
             <View style={styles.profile}>
@@ -20,7 +20,7 @@ const ProfileImage = ({user}) => {
     )
 }
 
-export default ProfileImage;
+export default ProfileHeader;
 
 const styles = StyleSheet.create({
     header:{

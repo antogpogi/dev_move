@@ -9,8 +9,8 @@ import { setSession } from './../../../store/actions/application';
 
 const Login = ({navigation, session, onSetSession}) => {
 
-    const [getUsername, setUsername] = useState('')
-    const [getPassword, setPassword] = useState('')
+    const [getUsername, setUsername] = useState('andrew')
+    const [getPassword, setPassword] = useState('kierberdin')
 
     const [getLoading, setLoading] = useState(false)
 
@@ -31,7 +31,7 @@ const Login = ({navigation, session, onSetSession}) => {
           "API-KEY" : "yolo@|-||_!$"
         }
       }).then((response) => {
-        console.log(response.data)
+        console.log(response)
         setLoading(false)
         onSetSession({
            user: response.data
@@ -39,7 +39,7 @@ const Login = ({navigation, session, onSetSession}) => {
         navigation.navigate("Home") 
 
       }).catch((response) => {
-        console.log(response)
+        console.error(response)
       })
     }
 

@@ -1,25 +1,26 @@
-import React  from 'react';
-import {StyleSheet, View} from 'react-native';
-import Body from './Body'
-import Loading from '../../../../../../../Loading';
+import React, { useState }  from 'react';
+import {StyleSheet, View, TextInput} from 'react-native';
+// import Body from './Body'
+// import Loading from '../../../../../../../Loading';
 import {connect} from 'react-redux';
-import {site_url} from '../../../../../../../constants';
+import { Button } from 'react-native-paper';
+// import {site_url} from '../../../../../../../constants';
 
 const MessagesScreen = ({navigation, session}) => {
 
+  const [getChat, setChat] = useState('')
+
   const userData = session.user.data;
+
+  const sendMessage = () => {
+    
+  }
 
     return (
         <View style={styles.container}>
-           <Loading loading={getLoading} />
-          <FlatList 
-            data={Following}
-            showsVerticalScrollIndicator={false}
-            renderItem = {({item}) => 
-              <Body userName={item.user_name} message={item.comment}/>
-            }
-          />
-      </View>
+            <TextInput style={{height:50}} value={getChat} onChangeText={(text) => {setChat(text)}} />
+            <Button onPress={() => sendMessage()} />
+        </View>
     )
 }
 
