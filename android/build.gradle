@@ -15,10 +15,12 @@ buildscript {
             name 'Google'
         }
         jcenter()
+        maven { url 'https://artifactory.img.ly/artifactory/imgly' }
     }
     dependencies {
         classpath("com.android.tools.build:gradle:3.4.1")
         classpath('com.google.gms:google-services:4.2.0')
+        classpath('ly.img.android.pesdk:plugin:6.5.2')
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }

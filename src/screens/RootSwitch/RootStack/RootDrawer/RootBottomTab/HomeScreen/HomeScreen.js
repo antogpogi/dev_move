@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import {StyleSheet, View, FlatList, NativeModules} from 'react-native';
 import Post from './Post';
 import axios from 'axios';
 import {site_url} from '../../../../../../../constants';
 import Loading from '../../../../../../../Loading';
 import Options from './Options';
 import { connect } from 'react-redux';
-import firebase from 'react-native-firebase';
 
 const HomeScreen = ({navigation, session}) => {
+
 
     const [getLoading, setLoading] = useState(true)
     const [getPostId, setPostId] = useState(false)
@@ -17,14 +17,7 @@ const HomeScreen = ({navigation, session}) => {
     // const payload = navigation.getParam('payload');
     const [getPost, setPost] = useState([]);
     const [getComment, setComment] = useState('');
-    console.log('Firebase: ', firebase.app())
-    // const fb = firebase.auth()
-    // .signInAnonymously()
-    // .then(credential => {
-    //   if(credential) {
-    //     console.log("default app user -> ", credential.user.toJSON())
-    //   }
-    // })
+    
 
     //data from login
     const userData = session.user.data;

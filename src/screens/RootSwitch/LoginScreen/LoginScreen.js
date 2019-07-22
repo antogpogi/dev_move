@@ -6,20 +6,23 @@ import axios from 'axios';
 import Loading from '../../../../Loading';
 import { connect } from 'react-redux';
 import { setSession } from './../../../store/actions/application';
+import firebase from 'react-native-firebase';
+
 
 const Login = ({navigation, session, onSetSession}) => {
 
-    const [getUsername, setUsername] = useState('vyrrh')
-    const [getPassword, setPassword] = useState('123456')
+    const [getUsername, setUsername] = useState('andrew')
+    const [getPassword, setPassword] = useState('kierberdin')
 
     const [getLoading, setLoading] = useState(false)
 
-    const passNav = () => {
+    const passNav = async () => {
+      const rnfToken = await firebase.messaging().getToken();
       console.log("Clicked");
       let formBod = new FormData();
       formBod.append('email',getUsername)
       formBod.append('device_type', "A")
-      formBod.append('device_token', "huh")
+      formBod.append('device_token', rnfToken)
       formBod.append('login_type', "S")
       formBod.append('password', getPassword)
       setLoading(true)
