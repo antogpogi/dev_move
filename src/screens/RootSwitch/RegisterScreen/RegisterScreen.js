@@ -1,8 +1,8 @@
-import React, {Component, useState} from 'react';
-import {Platform, StyleSheet, Text, View, Button, TextInput} from 'react-native';
+import React, {useState} from 'react';
+import {StyleSheet, View} from 'react-native';
 import Body from './Body';
 import axios from 'axios';
-import {site_url} from 'yolo/constants';
+import {site_url} from '../../../../constants';
 
 const RegisterScreen = ({navigation}) => {
 
