@@ -1,0 +1,56 @@
+{
+  "project_info": {
+    "project_number": "595621218438",
+    "firebase_url": "https://cloudpanda-yolo.firebaseio.com",
+    "project_id": "cloudpanda-yolo",
+    "storage_bucket": "cloudpanda-yolo.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:595621218438:android:2448cb44c8703986",
+        "android_client_info": {
+          "package_name": "com.cloudpanda.yolo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "595621218438-ugr0bj8058glfs1kvdu5epg9lbatp34q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cloudpanda.yolo",
+            "certificate_hash": "226aad93f991ad3d367bcb88a65425460e939a5f"
+          }
+        },
+        {
+          "client_id": "595621218438-l9ek9805chpbu0ijr4aqmtr02ncbhgr8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cloudpanda.yolo",
+            "certificate_hash": "a0874176e73097d2c4881170421d3190803cf5bb"
+          }
+        },
+        {
+          "client_id": "595621218438-o09uvkdg68i6mg8onlol60ds0tq7mv74.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLZYwBjZpSlijKJg2t-Vj99oicZGGObnA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "595621218438-iot8qu7ej29u4jsag8ia4i2mvp3mt5ke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
