@@ -41,7 +41,7 @@ import BookMarkScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBo
 import BlockedUserScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/ProfileScreen/SettingScreen/BlockedUserScreen/BlockedUserScreen';
 import AboutUsScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/ProfileScreen/SettingScreen/AboutUsScreen/AboutUsScreen';
 import ContactUsScreen from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/ProfileScreen/SettingScreen/ContactUsScreen/ContactUsScreen';
-
+import MessageDefaultHeader from './src/screens/RootSwitch/RootStack/RootDrawer/RootBottomTab/MessagesScreen/MessageDefaultHeader';
 //NotificationScreen with top navigation
 const NotificationTopTab = createMaterialTopTabNavigator({
     You: {
@@ -73,6 +73,11 @@ const HomeStack = createStackNavigator({
 const MessagesStack = createStackNavigator({
     MessagesS: {
         screen: MessagesScreen,
+        navigationOptions:({navigation})=>({
+            headerTitle: () =>{
+                return <MessageDefaultHeader navigation={navigation} />
+            }
+        })
     }
 })
 
@@ -322,8 +327,10 @@ const RootStack = createStackNavigator({
         navigationOptions: () => ({
             headerTitle: () => {
                 return (
-                <View style={{flex:1}}>
-                    <Text>Comments</Text>    
+                    <View style={{flex: 1}}>
+                    <View style={{justifyContent: 'center', alignItems: 'center', right: '10%'}}>
+                        <Text style={{color: 'black', fontWeight: 'bold'}}>Comments</Text>    
+                    </View>
                 </View>
                 )
             }
@@ -334,8 +341,10 @@ const RootStack = createStackNavigator({
         navigationOptions: () => ({
             headerTitle: () => {
                 return (
-                <View style={{flex:1}}>
-                    <Text>Likes</Text>    
+                <View style={{flex: 1}}>
+                    <View style={{justifyContent: 'center', alignItems: 'center', right: '10%'}}>
+                        <Text style={{color: 'black', fontWeight: 'bold'}}>Likes</Text>    
+                    </View>
                 </View>
                 )
             }

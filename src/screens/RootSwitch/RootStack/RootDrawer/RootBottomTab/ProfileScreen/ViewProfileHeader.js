@@ -7,7 +7,7 @@ const ViewProfileHeader = ({user, follow_unfollow}) => {
         <View style={{flex:1}}>
             <View style={styles.header}>
                 <View style={styles.profile}>
-                    <Image style={{width:70, height: 70, borderRadius: 70/2}} source={require('../../../../../../../public/images/1559644819305.jpg')} />
+                    <Image style={{width:70, height: 70, borderRadius: 70/2}} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
                 </View>
                 <View style={styles.body}>
                     <View style={{flex:1, justifyContent:"center"}}>

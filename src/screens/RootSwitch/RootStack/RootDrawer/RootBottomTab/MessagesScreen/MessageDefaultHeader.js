@@ -4,24 +4,14 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import IconFont from 'react-native-vector-icons/FontAwesome';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-export default function ProfileDefaultHeader({navigation}) {
+export default function MessageDefaultHeader({navigation}) {
 
     
 
     return (
         <View style={styles.container}>
-            <View style={{flex:1}}>
-                {/* <TouchableOpacity onPress={()=>{navigation.navigate("Profile")}} style={styles.touchOpacity}>
-                    <Image style={styles.image} source={require('../../../public/images/1559644819305.jpg')} />    
-                </TouchableOpacity> */}
-            </View>
             <View style={styles.title}>
-                <Text style={{fontWeight: 'bold', color: 'black'}}>YOLO</Text>
-            </View>
-            <View style={{flex:1, flexDirection:"row", justifyContent:'flex-end'}}>
-                <TouchableOpacity onPress={()=>{navigation.navigate("Settings")}} style={styles.touchOpacityRight}>
-                    <Icon name={"ios-settings"} size={20} />
-                </TouchableOpacity>
+                <Text style={{fontWeight: 'bold', color: 'black'}}>Messages</Text>
             </View>
         </View>
     )

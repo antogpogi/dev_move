@@ -5,7 +5,7 @@ const ProfileHeader = ({user}) => {
     return (
         <View style={styles.header}>
             <View style={styles.profile}>
-                <Image style={{width:80, height: 80, borderRadius: 80/2}} source={require('../../../../../../../public/images/1559644819305.jpg')} />
+                <Image style={{width:80, height: 80, borderRadius: 80/2}} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
             </View>
             <View style={styles.body}>
                 <View style={{flex:1, justifyContent:"center"}}>

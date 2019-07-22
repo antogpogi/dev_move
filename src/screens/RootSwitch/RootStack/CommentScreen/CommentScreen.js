@@ -77,9 +77,10 @@ const CommentScreen = ({navigation}) => {
             <Comment userName={item.user_name} message={item.comment}/>
           }
           keyExtractor={(item, index) => index.toString()}
+          style={{backgroundColor:'navajowhite'}}
          />
-         <View style={{flexDirection:"row", alignItems:"center"}}>
-            <View style={{flex:1}}>
+         <View style={{flexDirection:"row", alignItems:"center", backgroundColor:'navajowhite'}}>
+            <View style={{flex:1,}}>
               <TextInput style={styles.txtBox} onChangeText={(text) => setComment(text)} value={getComment} placeholder="Write your comment..."/>
             </View>
             <View style={{flexBasis:"10%"}}>
@@ -102,7 +103,8 @@ const styles = StyleSheet.create({
     borderColor: 'gray', 
     borderWidth: 1,
     borderRadius:50/2,
-    margin: 10
+    margin: 10,
+    backgroundColor:'white'
   }
 });
 

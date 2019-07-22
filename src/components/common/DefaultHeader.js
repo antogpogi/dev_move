@@ -9,11 +9,11 @@ export default function DefaultHeader({navigation}) {
         <View style={styles.container}>
             <View style={{flex:1}}>
                 <TouchableOpacity onPress={()=>{navigation.navigate("Profile")}} style={styles.touchOpacity}>
-                    <Image style={styles.image} source={require('../../../public/images/1559644819305.jpg')} />    
+                    <Image style={styles.image} source={require('../../../public/images/IMG_20190710_113534.jpg')} />    
                 </TouchableOpacity>
             </View>
             <View style={styles.title}>
-                <Text>YOLO</Text>
+                <Text style={{fontWeight: 'bold', color: 'black'}}>YOLO</Text>
             </View>
             <View style={{flex:1, flexDirection:"row", justifyContent:'flex-end'}}>
                 <TouchableOpacity onPress={()=>{navigation.navigate("Search")}} style={styles.touchOpacityRight}>

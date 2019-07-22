@@ -11,7 +11,7 @@ const ImageList = ({item, viewThisPost}) => {
   return (
     <View style={styles.itemPic}>
     <TouchableOpacity onPress={() => viewThisPost({post_id: item.post_id})}>
-        <Image style={{width:'100%', height:'100%'}} source={require('../../../../../../../public/images/1559644819305.jpg')} />
+        <Image style={{width:'100%', height:'100%'}} source={require('../../../../../../../public/images/IMG_20190710_111946.jpg')} />
       </TouchableOpacity>
     </View>
   )

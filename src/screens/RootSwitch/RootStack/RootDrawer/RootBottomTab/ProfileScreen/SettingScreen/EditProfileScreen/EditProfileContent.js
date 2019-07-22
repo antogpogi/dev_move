@@ -21,7 +21,7 @@ const EditProfileContent= ({}) => {
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
             <View style={{height: 165, width: '100%', elevation: 5, }}>
                 <View style={{justifyContent: 'center', alignItems: 'center', height: '100%', width: '100%', }}>
-                    <Image source={require('../../../../../../../../../public/images/1559644819305.jpg')} style={{ height: 120, width: 120, borderRadius: 70 }}/>
+                    <Image source={require('../../../../../../../../../public/images/IMG_20190710_113534.jpg')} style={{ height: 120, width: 120, borderRadius: 70 }}/>
                 </View>
             </View>
             <View style={{height: '70%', width: '100%', paddingLeft: 25, paddingRight: 25, paddingTop: 15, elevation: 5, }}> 
