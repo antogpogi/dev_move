@@ -170,7 +170,7 @@ const ProfileScreen= ({navigation, session}) => {
                 Menu={Menu} 
                 getList={getList} 
                 viewThisPost={viewThisPost} 
-                // getLoading={getLoading} 
+                getLoading={getLoading} 
                 getVisible={getVisible} 
                 setVisible={setVisible} 
                 getPostId={getPostId} 
