@@ -53,8 +53,19 @@ const Post = ({posts, openOption, like_unlike, comment_post, setComment, getComm
                         </View>
                     </View>
                     <View style={styles.view_comments}>
-                        <IconFont name={"comments"} size={18} style={{padding: 13}} />
-                        <Text onPress={() => viewComments({post_id: posts.post_id})}>View all comments</Text>
+                        <Image style={{width:33, height: 33, borderRadius: 35/2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
+                        <Text style={{marginLeft: '2%', bottom: '2%'}}>{posts.user_name}</Text>
+                        <View style={{right: '80%', top: '3%'}}>
+                        <Text style={{color: 'black'}}>Wow cool post, love it!</Text>
+                        </View>
+                    </View>
+                    <View style={{height: '5%'}}></View>
+                    <View style={styles.view_comments}>
+                        <Image style={{width:33, height: 33, borderRadius: 35/2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
+                        <Text style={{marginLeft: '2%', bottom: '2%'}}>{posts.user_name}</Text>
+                        <View style={{right: '80%', top: '3%'}}>
+                        <Text style={{color: 'black'}}>Wow cool post, love it!</Text>
+                        </View>
                     </View>
                     <View style={[styles.commentBox, styles.flexViewComment]}>
                         <Image style={{width:35, height: 35, borderRadius: 35/2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
@@ -78,7 +89,7 @@ export default Post
 const styles = StyleSheet.create({
   post: {
       top: 20,
-      height: 500,
+      height: 530,
     //   borderBottomColor: '#bbb', 
     //   borderBottomWidth: 2.5,
       borderRadius: 20,
@@ -125,7 +136,7 @@ const styles = StyleSheet.create({
   },
   commentBox:{
       justifyContent: 'space-around',
-      marginTop: 10,
+    //   marginTop: 5,
     //   alignItems: 'center'
     //   backgroundColor: 'red',
   },
@@ -141,14 +152,17 @@ const styles = StyleSheet.create({
   activityBtn:{
     // flex: 1, 
     flexDirection: 'row',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center'
   },
   view_comments:{
       marginLeft:15, 
       width:"90%", 
-      borderBottomColor: '#bbb', 
-      borderBottomWidth: 1, 
+      bottom: '3%',
+    //   marginBottom: '3%',
+    //   backgroundColor: 'white',
+    //   borderBottomColor: '#bbb', 
+    //   borderBottomWidth: 1, 
       flexDirection:'row',
       alignItems:'center',
     }
