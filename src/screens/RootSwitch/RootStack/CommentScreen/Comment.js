@@ -11,7 +11,7 @@ const Comment = ({ userName, message }) => {
                 </View>
                 <View style={styles.info}>
                     <Text style={styles.username}>{userName}</Text>
-                    <Text style={{fontWeight: 'bold', color: 'black'}}>{message}</Text>
+                    <Text style={{ fontWeight: 'bold', color: 'black' }}>{message}</Text>
                     <Text style={{ marginTop: 5 }}>5 minutes ago     Reply</Text>
                 </View>
             </View>
@@ -25,7 +25,7 @@ export default Comment
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        marginBottom: 10,
+        // marginBottom: 10,
     },
     commentBox: {
         top: 15,
@@ -34,10 +34,10 @@ const styles = StyleSheet.create({
         // flexWrap: 'nowrap',
         justifyContent: 'center',
         // borderBottomColor: '#bbb',
-        elevation: 5,
-        backgroundColor: '#CDCBCB',
-        borderRadius: 20,
-        marginBottom: 7
+        // elevation: 5,
+        // backgroundColor: '#CDCBCB',
+        // borderRadius: 20,
+        // marginBottom: 7
     },
     image: {
         marginLeft: 10,

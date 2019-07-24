@@ -1,6 +1,6 @@
 <script src="http://localhost:8081"></script>
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Image, TouchableOpacity, TouchableWithoutFeedback } from 'react-native';
 import IconFont from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
@@ -19,69 +19,85 @@ const Post = ({ posts, openOption, like_unlike, comment_post, setComment, getCom
                             <Image style={{ width: 45, height: 45, borderRadius: 10, marginRight: 12, marginLeft: 8 }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
                             <Text style={{ fontWeight: 'bold', fontSize: 19, color: 'black' }}>{posts.user_name}</Text>
                         </TouchableOpacity>
-                        <Text style={{color: 'black'}}>{moment(moment.unix(posts.insertdate).format('YYYY-MM-DD hh:mm:ss')).fromNow()}</Text>
+                        <Text style={{color: 'black',}}>{moment(moment.unix(posts.insertdate).format('YYYY-MM-DD hh:mm:ss')).fromNow()}</Text>
                         <FontAwesome5 style={{ padding: 23, color: 'black' }} onPress={() => { openOption({ post_id: posts.post_id }) }} name={"ellipsis-h"} size={20} />
-                    </View>
-                    <View style={styles.details}>
-                        <Text style={{ fontSize: 17, color: 'black' }}>{posts.caption}</Text>
                     </View>
                 </View>
                 <View style={styles.body}>
                     {/* <Image style={{width: "100%", height: "95%", borderRadius: 10}} source={{uri: `${posts.post_media}`}} /> */}
-                    <Image style={{ width: "100%", height: "95%", borderRadius: 10 }} source={require('../../../../../../../public/images/IMG_20190710_111946.jpg')} />
+                    <Image style={{ width: "100%", height: "100%" }} source={require('../../../../../../../public/images/IMG_20190710_111946.jpg')} />
                 </View>
                 <View style={styles.footer}>
-                    <View style={styles.activities}>
-                        <View style={styles.activityBtn}>
+                    <View style={{flexDirection: 'row', alignItems: 'flex-start'}}>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
                             {posts.is_liked == "1" ?
-                                <FontAwesome name={"heart"} size={18} style={{ color: "red", padding: 18, }} onPress={() => like_unlike({ post_id: posts.post_id, status: 0 })} />
-                                : <Feather name={"heart"} size={18} style={{ padding: 18, color:'black' }} onPress={() => like_unlike({ post_id: posts.post_id, status: 1 })} />
+                                <FontAwesome name={"heart"} size={21} style={{ color: "red", padding: 13, }} onPress={() => like_unlike({ post_id: posts.post_id, status: 0 })} />
+                                : <Feather name={"heart"} size={21} style={{ padding: 13, color: 'black' }} onPress={() => like_unlike({ post_id: posts.post_id, status: 1 })} />
                             }
                             <Text onPress={() => viewLikes({ post_id: posts.post_id })} style={{color: 'black'}}>{posts.like_count}</Text>
                         </View>
-                        <View style={styles.activityBtn}>
-                            <Feather name={"message-square"} size={18} style={{ padding: 13, color: 'black' }} onPress={() => viewComments({ post_id: posts.post_id })}/>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <Feather name={"message-square"} size={21} style={{ padding: 13, color: 'black' }} onPress={() => viewComments({ post_id: posts.post_id })}/>
                             <Text onPress={() => viewComments({ post_id: posts.post_id })} style={{color: 'black'}}>{posts.comment_count}</Text>
                         </View>
-                        <View style={styles.activityBtn}>
-                            <IconFont name={"share"} size={18} style={{ padding: 13, color: 'black' }} />
-                            <Text></Text>
+                        <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                            <IconFont name={"share"} size={21} style={{ padding: 13, color: 'black' }} />
+                        </View>
+                        <View style={{flexDirection: 'row-reverse', alignItems: 'flex-end', flex: 1}}>
+                            <FontAwesome name={"bookmark-o"} size={21} style={{ padding: 13, color: 'black',}} />
                         </View>
                     </View>
-                    <View style={styles.view_comments1}>
-                        <Image style={{ width: 33, height: 33, borderRadius: 35 / 2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
-                        <View style={{ flexDirection: 'column' }}>
-                            <Text style={{ marginLeft: '5%', bottom: '2%' }}>{posts.user_name}</Text>
-                            <View style={{ top: '2%', alignItems: 'flex-start', marginLeft: '5%', }}>
-                                <Text style={{ color: 'black' }}>Wow cool post, love it!</Text>
+                </View>
+                <View>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{marginLeft: 15}}>
+                            <Text style={{ fontWeight: 'bold', fontSize: 17, color: 'black' }}>{posts.user_name}</Text>
+                            <View style={{}}>
+                                <Text style={{ fontSize: 17, color: 'black' }}>{posts.caption}</Text>
                             </View>
                         </View>
                     </View>
-                    <View style={styles.view_comments1}>
-                        <Image style={{ width: 33, height: 33, borderRadius: 35 / 2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
-                        <View style={{ flexDirection: 'column' }}>
-                            <Text style={{ marginLeft: '5%', bottom: '2%' }}>{posts.user_name}</Text>
-                            <View style={{ top: '2%', alignItems: 'flex-start', marginLeft: '5%', }}>
-                                <Text style={{ color: 'black' }}>I love you please go out with me</Text>
+                </View>
+                {/* <View>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{marginLeft: 15, flexDirection: 'row'}}>
+                            <Image style={{ width: 33, height: 33, borderRadius: 35 / 2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
+                            <View style={{flexDirection:'column'}}>
+                                <Text style={{ marginLeft: '5%', bottom: '2%' }}>{posts.user_name}</Text>
+                                <Text style={{ color: 'black', marginLeft: '5%' }}>Wow cool post, love it!</Text>
                             </View>
                         </View>
                     </View>
+                </View>
+                <View>
+                    <View style={{flexDirection: 'row', alignItems: 'center'}}>
+                        <View style={{marginLeft: 15, flexDirection: 'row'}}>
+                            <Image style={{ width: 33, height: 33, borderRadius: 35 / 2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
+                            <View style={{flexDirection:'column'}}>
+                                <Text style={{ marginLeft: '5%', bottom: '2%' }}>{posts.user_name}</Text>
+                                <Text style={{ color: 'black', marginLeft: '5%' }}>Wow cool post, love it!</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View> */}
+                <View>
                     <View style={{ paddingLeft: 20, marginBottom: 10 }}>
                         <TouchableOpacity onPress={() => viewComments({ post_id: posts.post_id })}>
                             <Text style={{ color: 'black', fontWeight: 'bold' }}>
                                 ...view all comments
-                            </Text>
+                                </Text>
                         </TouchableOpacity>
                     </View>
-                    <View style={[styles.commentBox, styles.flexViewComment]}>
-                        <Image style={{ width: 35, height: 35, borderRadius: 35 / 2, left: 2, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
+                </View>
+                <View style={{paddingLeft: 10, paddingRight: 10}}>
+                    <View style={styles.flexViewComment}>
+                        <Image style={{ width: 35, height: 35, borderRadius: 35 / 2, left: 1, }} source={require('../../../../../../../public/images/IMG_20190710_113534.jpg')} />
                         <TextInput onChangeText={(text) => {
                             setComment(text)
                         }} value={getComment} style={{ flexBasis: '80%', height: 40, }} placeholder="Write your comment..." />
-                        <TouchableOpacity style={{ width: 25, height: 28, right: 8, }} onPress={() => comment_post({ post_id: posts.post_id })}>
+                        <TouchableOpacity style={{ width: 25, height: 28, }} onPress={() => comment_post({ post_id: posts.post_id })}>
                             <FontAwesome name={"chevron-circle-right"} size={28} style={{ color: 'blue' }}  />
                         </TouchableOpacity>
-                        {/* <Button onPress={() => comment_post({post_id: posts.post_id})} /> */}
                     </View>
                 </View>
             </View>
@@ -94,15 +110,13 @@ export default Post
 
 const styles = StyleSheet.create({
     post: {
-        top: 20,
-        //   height: '70%',
-        height: 550,
-        //   borderBottomColor: '#bbb', 
-        //   borderBottomWidth: 2.5,
-        borderRadius: 20,
-        backgroundColor: 'gainsboro',
-        marginBottom: 25,
-        elevation: 5
+        // top: 20,
+        height: 650,
+        // borderBottomWidth: 0.5,
+        // borderTopWidth: 0.5,
+        // borderColor: 'lightgray',
+        // marginBottom: 10,
+        // elevation: 2,
     },
     head: {
         //   flex: 1,
@@ -110,17 +124,17 @@ const styles = StyleSheet.create({
         // backgroundColor: 'red'
     },
     body: {
-        flex: 2,
-        paddingTop: 10,
-        paddingLeft: 10,
-        paddingRight: 10,
-        //   backgroundColor:'blue'
+        flex: 3,
+        // paddingTop: 5,
+        // paddingLeft: 10,
+        // paddingRight: 10,
+        // //   backgroundColor:'blue'
         //   top: 20
     },
     footer: {
-        flex: 2,
-        bottom: 5,
-        marginBottom: 10,
+        // flex: 1,
+        // bottom: 5,
+        // marginBottom: 10,
         //   backgroundColor:'red'
     },
     flexView: {
@@ -137,25 +151,25 @@ const styles = StyleSheet.create({
         flex: 1
     },
     flexViewComment: {
-        width: '90%',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        borderWidth: 1, borderRadius: 30,
+        borderWidth: 0.5,
+        borderRadius: 30,
         borderColor: 'gray',
+        marginBottom: 15
         // left: '10%',
         // backgroundColor: 'blue'
     },
     activities: {
-        justifyContent: 'space-evenly',
+        // justifyContent: 'space-evenly',
         height: 30,
-        width: '55%',
+        width: '100%',
         flexDirection: 'row',
         alignItems: 'center',
-        // borderBottomWidth: 0.5,
-        // marginBottom: 10,
-        // right: 15,
-        bottom: 10,
-        flex: 1
+        top: 5,
+        // marginBottom: 5,
+        flex: 1,
 
     },
     commentBox: {
@@ -173,14 +187,22 @@ const styles = StyleSheet.create({
     details: {
         //   flex:1,
         marginLeft: 15,
-        //   paddingTop: 30
-        // top: 20
+        // marginBottom: 5,
+        flexDirection: 'row',
+        // alignItems: 'center',
     },
     activityBtn: {
-        flex: 2,
+        // flex: 1,
         flexDirection: 'row',
         // justifyContent: 'center',
         alignItems: 'center',
+    },
+    activityBtnBookMark: {
+        flex: 1,
+        flexDirection: 'row-reverse',
+        // justifyContent: 'center',
+        alignItems: 'center',
+        // marginLeft: 20
     },
     view_comments: {
         flex: 1,
@@ -196,7 +218,7 @@ const styles = StyleSheet.create({
     },
     view_comments1: {
         flex: 1,
-        marginLeft: 15,
+        marginLeft: 10,
         width: "90%",
         //   bottom: '3%',
         //   marginBottom: '3%',

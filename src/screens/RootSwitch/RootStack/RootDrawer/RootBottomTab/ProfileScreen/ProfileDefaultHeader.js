@@ -18,7 +18,7 @@ export default function ProfileDefaultHeader({navigation}) {
             <View style={styles.title}>
                 <Text style={{fontWeight: 'bold', color: 'black'}}>YOLO</Text>
             </View>
-            <View style={{flex:1, flexDirection:"row", justifyContent:'flex-end'}}>
+            <View style={{flex:1, flexDirection:"row", justifyContent:'flex-end', }}>
                 <TouchableOpacity onPress={()=>{navigation.navigate("Settings")}} style={styles.touchOpacityRight}>
                     <Icon name={"ios-settings"} size={20} />
                 </TouchableOpacity>
@@ -39,8 +39,10 @@ const styles = StyleSheet.create({
         width:40
     },
     touchOpacityRight:{ 
-        marginRight:8,
-        width:20
+        // marginRight:8,
+        width:40,
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     image:{
         width:40, 

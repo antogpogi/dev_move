@@ -17,13 +17,21 @@ import EditProfileContent from './EditProfileContent';
 //         </View>
 //     )
 // }
-
 const EditProfileScreen = () => {
-          return(
-              <View style={styles.container}>
-                  <EditProfileContent/>
-              </View>
-          )
+  let data = [{
+    value: '+64',
+  }, {
+    value: '+65',
+  }, {
+    value: '+66',
+  }];
+  return (
+    <View style={styles.container}>
+      <EditProfileContent
+        data={data}
+      />
+    </View>
+  )
 }
 
 

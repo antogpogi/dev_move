@@ -77,9 +77,9 @@ const CommentScreen = ({navigation}) => {
             <Comment userName={item.user_name} message={item.comment}/>
           }
           keyExtractor={(item, index) => index.toString()}
-          style={{backgroundColor:'navajowhite'}}
+          style={{}}
          />
-         <View style={{flexDirection:"row", alignItems:"center", backgroundColor:'navajowhite'}}>
+         <View style={{flexDirection:"row", alignItems:"center" }}>
             <View style={{flex:1,}}>
               <TextInput style={styles.txtBox} onChangeText={(text) => setComment(text)} value={getComment} placeholder="Write your comment..."/>
             </View>

@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, View, FlatList} from 'react-native';
+import {StyleSheet, View, } from 'react-native';
+import { FlatList } from 'react-navigation'
 import Post from './Post';
 import axios from 'axios';
 import {site_url} from '../../../../../../../constants';
@@ -53,7 +54,7 @@ const HomeScreen = ({navigation, session}) => {
     }
 
     useEffect(() => {
-        getInitialPost()
+        getInitialPost();
     },[]);
 
     //Like or unlike a post.
@@ -65,7 +66,7 @@ const HomeScreen = ({navigation, session}) => {
         formBod.append("status", data.status)
 
         const url = site_url + "/posts/like_unlike/";
-        setLoading(true)
+        // setLoading(true)
         await axiosAPI(url, formBod)
         setLoading(false)
         getInitialPost()
